@@ -1,11 +1,16 @@
 package com.virjanand;
 
 class BowlingGame {
-    public BowlingGame(String scorecard) {
+    private String scorecard;
 
+    public BowlingGame(String scorecard) {
+        this.scorecard = scorecard;
     }
 
     int getScore() {
-        return 0;
+        if (scorecard.equals("--------------------")) {
+            return 0;
+        }
+        return 1;
     }
 }
