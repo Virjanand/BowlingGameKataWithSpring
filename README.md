@@ -19,6 +19,7 @@ Examples:
 - 5/5/5/5/5/5/5/5/5/5/5 -> score: 150
 
 *ToDo*
+- [ ] Create test for HelloWorld bean to understand how to use beans and test them
 - [ ] -------------------- -> score: 0
 - [ ] 11111111111111111111 -> score: 20
 - [ ] 1-1-1-1-1-1-1-1-1-1- -> score: 10
