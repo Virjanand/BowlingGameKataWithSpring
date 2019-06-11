@@ -22,7 +22,7 @@ Examples:
 - [x] Create test for HelloWorld bean to understand how to use beans and test them
 - [x] -------------------- -> score: 0
 - [x] 1------------------- -> score: 1
-- [ ] refactor duplication ---... between test and implementation
+- [x] refactor duplication ---... between test and implementation
 - [ ] 11111111111111111111 -> score: 20
 - [ ] 1-1-1-1-1-1-1-1-1-1- -> score: 10
 - [ ] XXXXXXXXXXXX -> score: 300
