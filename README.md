@@ -21,6 +21,7 @@ Examples:
 *ToDo*
 - [x] Create test for HelloWorld bean to understand how to use beans and test them
 - [ ] -------------------- -> score: 0
+- [ ] 1------------------- -> score: 1
 - [ ] 11111111111111111111 -> score: 20
 - [ ] 1-1-1-1-1-1-1-1-1-1- -> score: 10
 - [ ] XXXXXXXXXXXX -> score: 300
