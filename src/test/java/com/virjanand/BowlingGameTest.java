@@ -7,7 +7,7 @@ import org.junit.Test;
 public class BowlingGameTest {
 
     @Test
-    public void nothingHit_score0() {
+    public void noHit_score0() {
         BowlingGame bowlingGame = new BowlingGame("--------------------");
         assertEquals(0, bowlingGame.getScore());
     }
