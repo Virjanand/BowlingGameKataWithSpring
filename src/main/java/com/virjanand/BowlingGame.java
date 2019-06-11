@@ -1,6 +1,5 @@
 package com.virjanand;
 
-import java.util.Collection;
 import java.util.stream.IntStream;
 
 class BowlingGame {
@@ -11,9 +10,8 @@ class BowlingGame {
     }
 
     int getScore() {
-        if (scorestream.filter(score -> score == '1').count() > 0) {
-            return 1;
-        }
-        return 0;
+        return scorestream.filter(score -> score == '1')
+                .map(score -> score - '0')
+                .sum();
     }
 }

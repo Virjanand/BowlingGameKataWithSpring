@@ -23,6 +23,6 @@ Examples:
 - [x] -------------------- -> score: 0
 - [x] 1------------------- -> score: 1
 - [x] refactor duplication ---... between test and implementation
-- [ ] 11111111111111111111 -> score: 20
+- [x] 11111111111111111111 -> score: 20
 - [ ] 1-1-1-1-1-1-1-1-1-1- -> score: 10
 - [ ] XXXXXXXXXXXX -> score: 300

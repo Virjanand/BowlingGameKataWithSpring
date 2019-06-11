@@ -17,4 +17,10 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame("1-------------------");
         assertEquals(1, bowlingGame.getScore());
     }
+
+    @Test
+    public void allOneHits_score20() {
+        BowlingGame bowlingGame = new BowlingGame("11111111111111111111");
+        assertEquals(20, bowlingGame.getScore());
+    }
 }
