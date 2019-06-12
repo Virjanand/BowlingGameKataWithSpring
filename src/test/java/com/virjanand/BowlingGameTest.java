@@ -21,12 +21,18 @@ public class BowlingGameTest {
     @Test
     public void allOneHits_score20() {
         BowlingGame bowlingGame = new BowlingGame("11111111111111111111");
-        assertEquals(20, bowlingGame.getScore());
+        assertEquals(20 * 1, bowlingGame.getScore());
     }
 
     @Test
     public void differentNumbers_score15() {
         BowlingGame bowlingGame = new BowlingGame("12345---------------");
-        assertEquals(15, bowlingGame.getScore());
+        assertEquals(1 + 2 + 3 + 4 + 5, bowlingGame.getScore());
+    }
+
+    @Test
+    public void strike_add10AndDoubleNextThrow() {
+        BowlingGame bowlingGame = new BowlingGame("X5------------------");
+        assertEquals(10 + 2 * 5, bowlingGame.getScore());
     }
 }

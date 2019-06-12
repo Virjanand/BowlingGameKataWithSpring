@@ -20,7 +20,9 @@ class BowlingGame {
     }
 
     private int sumScores(int sum, int nextThrow) {
-        return sum+nextThrow;
+        if (sum == 'X' - '0')
+            return 10 + 2 * nextThrow;
+        return sum + nextThrow;
     }
 
     private int convertScore(int score) {

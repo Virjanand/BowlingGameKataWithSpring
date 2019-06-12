@@ -29,5 +29,5 @@ Examples:
 - [x] refactor: don't use sum, but reduce
 - [x] 12345--------------- -> score: 15
 - [x] refactor: put filter in method
-- [ ] X5------------------ -> score: 20
+- [x] X5------------------ -> score: 20
 - [ ] XXXXXXXXXXXX -> score: 300
