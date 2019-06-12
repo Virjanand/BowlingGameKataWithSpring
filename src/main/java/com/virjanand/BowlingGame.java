@@ -10,7 +10,7 @@ class BowlingGame {
     }
 
     int getScore() {
-        return scorestream.filter(score -> score == '1')
+        return scorestream.filter(score -> score != '-')
                 .map(this::convertScore)
                 .reduce(this::sumScores).orElse(0);
     }

@@ -27,5 +27,5 @@ Examples:
 - [x] refactor lambda to method reference
 - [ ] ~~1-1-1-1-1-1-1-1-1-1- -> score: 10~~
 - [x] refactor: don't use sum, but reduce
-- [ ] 12345--------------- -> score: 15
+- [x] 12345--------------- -> score: 15
 - [ ] XXXXXXXXXXXX -> score: 300

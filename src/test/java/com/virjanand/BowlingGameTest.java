@@ -23,4 +23,10 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame("11111111111111111111");
         assertEquals(20, bowlingGame.getScore());
     }
+
+    @Test
+    public void differentNumbers_score15() {
+        BowlingGame bowlingGame = new BowlingGame("12345---------------");
+        assertEquals(15, bowlingGame.getScore());
+    }
 }
