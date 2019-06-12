@@ -12,10 +12,7 @@ class BowlingGame {
     int getScore() {
         int sum = 0;
         for (char score : scores) {
-            if (isNonZero(score)) {
-                int tempScore = convertScore(score);
-                sum = sumScores(sum, tempScore);
-            }
+            if (isNonZero(score)) sum = sumScores(sum, convertScore(score));
         }
         return sum;
     }

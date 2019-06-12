@@ -33,5 +33,9 @@ Examples:
 - [ ] ~~refactor: split sumScores in filter part that deals with strike and summation.~~
 - [x] refactor: extract maxScore 10
 - [x] refactor: extract '0' constant
-- [ ] rewrite to use charArray, because with stream it's not possible to look to next item
+- [x] rewrite to use charArray, because with stream it's not possible to look to next item
+- [ ] inline tempScore
+- [ ] replace methods with methods for charArray
+- [ ] refactor: instead of isNonZero method, use a convertToIntScore method
+- [ ] refactor: make sumscore dependent on only current char and check next char if it exists
 - [ ] XXXXXXXXXXXX -> score: 300
