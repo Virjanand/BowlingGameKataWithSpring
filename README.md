@@ -25,5 +25,7 @@ Examples:
 - [x] refactor duplication ---... between test and implementation
 - [x] 11111111111111111111 -> score: 20
 - [x] refactor lambda to method reference
-- [ ] 1-1-1-1-1-1-1-1-1-1- -> score: 10
+- [ ] ~~1-1-1-1-1-1-1-1-1-1- -> score: 10~~
+- [x] refactor: don't use sum, but reduce
+- [ ] 12345--------------- -> score: 15
 - [ ] XXXXXXXXXXXX -> score: 300
