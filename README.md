@@ -3,7 +3,7 @@ Rules of the game:
 - 10 turns
 - 2 tries per turns
 - all ten pins knocked down in 2 turns is a spare -> 10 + score next turn
-- all ten pins knocked down in 1 turn is a strike -> 10 + score next turn
+- all ten pins knocked down in 1 turn is a strike -> 10 + score next 2 turns
 - last rol a spare or strike -> 1 or 2 more rolls respectively
 - final score is sum of all scores
 
@@ -34,7 +34,7 @@ Examples:
 - [x] refactor: extract maxScore 10
 - [x] refactor: extract '0' constant
 - [x] rewrite to use charArray, because with stream it's not possible to look to next item
-- [ ] inline tempScore
+- [x] inline tempScore
 - [ ] replace methods with methods for charArray
 - [ ] refactor: instead of isNonZero method, use a convertToIntScore method
 - [ ] refactor: make sumscore dependent on only current char and check next char if it exists
