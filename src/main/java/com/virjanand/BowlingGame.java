@@ -1,20 +1,23 @@
 package com.virjanand;
 
-import java.util.stream.IntStream;
-
 class BowlingGame {
     public static final char ZERO = '0';
     public static final int MAX_SCORE = 10;
-    IntStream scorestream;
+    char[] scores;
 
     public BowlingGame(String scorecard) {
-        scorestream = scorecard.chars();
+        scores = scorecard.toCharArray();
     }
 
     int getScore() {
-        return scorestream.filter(this::isNonZero)
-                .map(this::convertScore)
-                .reduce(this::sumScores).orElse(0);
+        int sum = 0;
+        for (char score : scores) {
+            if (isNonZero(score)) {
+                int tempScore = convertScore(score);
+                sum = sumScores(sum, tempScore);
+            }
+        }
+        return sum;
     }
 
     private boolean isNonZero(int score) {

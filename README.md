@@ -30,7 +30,8 @@ Examples:
 - [x] 12345--------------- -> score: 15
 - [x] refactor: put filter in method
 - [x] X5------------------ -> score: 20
-- [ ] refactor: split sumScores in filter part that deals with strike and summation.
+- [ ] ~~refactor: split sumScores in filter part that deals with strike and summation.~~
 - [x] refactor: extract maxScore 10
 - [x] refactor: extract '0' constant
+- [ ] rewrite to use charArray, because with stream it's not possible to look to next item
 - [ ] XXXXXXXXXXXX -> score: 300
