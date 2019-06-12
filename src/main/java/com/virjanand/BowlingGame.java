@@ -10,9 +10,13 @@ class BowlingGame {
     }
 
     int getScore() {
-        return scorestream.filter(score -> score != '-')
+        return scorestream.filter(this::isNonZero)
                 .map(this::convertScore)
                 .reduce(this::sumScores).orElse(0);
+    }
+
+    private boolean isNonZero(int score) {
+        return score != '-';
     }
 
     private int sumScores(int sum, int nextThrow) {
