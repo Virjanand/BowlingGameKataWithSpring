@@ -28,18 +28,18 @@ class BowlingGame {
         return result;
     }
 
-    private int convertToNumber(Character character, int i) {
-        if (isExtraRoll(i) || scoresList.get(i) == '-')
+    private int convertToNumber(Character character, int currentThrow) {
+        if (isExtraThrow(currentThrow) || scoresList.get(currentThrow) == '-')
             return 0;
         if (character == STRIKE)
-            return MAX_SCORE + convertNextThrow(i, 1) + (convertNextThrow(i, 2));
+            return MAX_SCORE + convertNextThrow(currentThrow, 1) + (convertNextThrow(currentThrow, 2));
         if (character == SPARE)
-            return MAX_SCORE + convertNextThrow(i, 1) - convertNextThrow(i, -1);
-        else return scoresList.get(i) - ZERO;
+            return MAX_SCORE + convertNextThrow(currentThrow, 1) - convertNextThrow(currentThrow, -1);
+        else return scoresList.get(currentThrow) - ZERO;
     }
 
-    private boolean isExtraRoll(int i) {
-        return i >= scoresList.size() - 2 && (scoresList.get(i - 2) == 'X' || scoresList.get(i - 1) == '/');
+    private boolean isExtraThrow(int throwNumber) {
+        return throwNumber >= scoresList.size() - 2 && (scoresList.get(throwNumber - 2) == 'X' || scoresList.get(throwNumber - 1) == '/');
     }
 
     private int convertNextThrow(int i, int i2) {
