@@ -8,6 +8,7 @@ class BowlingGame {
     private static final char ZERO = '0';
     private static final int MAX_SCORE = 10;
     private static final char STRIKE = 'X';
+    private static final char SPARE = '/';
     private List<Character> scoresList;
 
     BowlingGame(String scorecard) {
@@ -15,13 +16,8 @@ class BowlingGame {
     }
 
     int getScore() {
-        int sum = 0;
         replaceZeros();
-        List<Integer> scoresAsInt = convertToNumbers();
-        for (int score : scoresAsInt) {
-            sum += score;
-        }
-        return sum;
+        return convertToNumbers().stream().mapToInt(Integer::intValue).sum();
     }
 
     private List<Integer> convertToNumbers() {
@@ -33,13 +29,17 @@ class BowlingGame {
     }
 
     private int convertToNumber(Character character, int i) {
-        if (i >= scoresList.size() - 2 && (scoresList.get(i - 2) == 'X' || scoresList.get(i - 1) == '/'))
+        if (isExtraRoll(i))
             return 0;
         if (character == STRIKE)
             return MAX_SCORE + convertNextThrow(i, 1) + (convertNextThrow(i, 2));
-        if (character == '/')
+        if (character == SPARE)
             return MAX_SCORE + convertNextThrow(i, 1) - convertNextThrow(i, -1);
         else return scoresList.get(i) - ZERO;
+    }
+
+    private boolean isExtraRoll(int i) {
+        return i >= scoresList.size() - 2 && (scoresList.get(i - 2) == 'X' || scoresList.get(i - 1) == '/');
     }
 
     private int convertNextThrow(int i, int i2) {
