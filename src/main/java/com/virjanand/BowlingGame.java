@@ -6,9 +6,10 @@ import java.util.stream.Collectors;
 
 class BowlingGame {
     private static final char ZERO = '0';
-    private static final int MAX_SCORE = 10;
     private static final char STRIKE = 'X';
     private static final char SPARE = '/';
+    private static final int MAX_SCORE = 10;
+
     private List<Character> scoresList;
 
     BowlingGame(String scorecard) {
