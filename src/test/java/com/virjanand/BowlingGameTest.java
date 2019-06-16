@@ -20,7 +20,13 @@ public class BowlingGameTest {
 
     @Test
     public void strike_add10AndDoubleNextThrow() {
-        BowlingGame bowlingGame = new BowlingGame("X5------------------");
-        assertEquals(10 + 2 * 5, bowlingGame.getScore());
+        BowlingGame bowlingGame = new BowlingGame("X5-X9---------------");
+        assertEquals(10 + 2 * 5 + 10 + 2 * 9, bowlingGame.getScore());
+    }
+
+    @Test
+    public void twoStrikes_compoundSum() {
+        BowlingGame bowlingGame = new BowlingGame("XX5-----------------");
+        assertEquals((10 + 10 + 5) + (10 + 5) + 5, bowlingGame.getScore());
     }
 }

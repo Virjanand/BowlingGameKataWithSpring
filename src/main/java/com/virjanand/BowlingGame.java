@@ -26,11 +26,15 @@ class BowlingGame {
     private List<Integer> convertToNumbers() {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < scoresList.size(); i++) {
-            if (scoresList.get(i) == 'X')
-                result.add(MAX_SCORE + (scoresList.get(i + 1) - ZERO));
-            else result.add(scoresList.get(i) - ZERO);
+            result.add(convertNumber(i, scoresList.get(i)));
         }
         return result;
+    }
+
+    private int convertNumber(int i, Character character) {
+        if (character == 'X')
+            return MAX_SCORE + (convertNumber(i + 1, scoresList.get(i + 1)));
+        else return scoresList.get(i) - ZERO;
     }
 
     private void replaceZeros() {

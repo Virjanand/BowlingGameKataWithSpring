@@ -37,6 +37,7 @@ Examples:
 - [x] inline tempScore
 - [x] Refactor tests to only include tests to explain working code
 - [x] replace methods with methods for ListArray of char/int?
-- [ ] refactor: instead of isNonZero method, use a convertToIntScore method
+- [x] refactor: instead of isNonZero method, use a convertToIntScore method
 - [ ] refactor: make sumscore dependent on only current char and check next char if it exists
+- [x] XX5--------------- -> 45
 - [ ] XXXXXXXXXXXX -> score: 300
