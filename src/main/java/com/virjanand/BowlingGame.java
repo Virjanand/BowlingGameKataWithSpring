@@ -17,7 +17,6 @@ class BowlingGame {
     }
 
     int getScore() {
-        replaceZeros();
         return convertToNumbers().stream().mapToInt(Integer::intValue).sum();
     }
 
@@ -30,7 +29,7 @@ class BowlingGame {
     }
 
     private int convertToNumber(Character character, int i) {
-        if (isExtraRoll(i))
+        if (isExtraRoll(i) || scoresList.get(i) == '-')
             return 0;
         if (character == STRIKE)
             return MAX_SCORE + convertNextThrow(i, 1) + (convertNextThrow(i, 2));
@@ -44,15 +43,8 @@ class BowlingGame {
     }
 
     private int convertNextThrow(int i, int i2) {
-        if (i >= scoresList.size() - 2)
+        if (i >= scoresList.size() - 2 || scoresList.get(i + i2) == '-')
             return 0;
         return scoresList.get(i + i2) == STRIKE ? MAX_SCORE : scoresList.get(i + i2) - ZERO;
-    }
-
-    private void replaceZeros() {
-        for (int i = 0; i < scoresList.size(); i++) {
-            if (scoresList.get(i) == '-')
-                scoresList.set(i, ZERO);
-        }
     }
 }
