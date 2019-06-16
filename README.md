@@ -41,3 +41,4 @@ Examples:
 - [x] refactor: make sumscore dependent on only current char and check next char if it exists
 - [x] XX5--------------- -> 45
 - [x] XXXXXXXXXXXX -> score: 300
+- [x] 5/5/5/5/5/5/5/5/5/5/5 -> 150
