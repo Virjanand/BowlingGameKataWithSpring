@@ -35,7 +35,8 @@ Examples:
 - [x] refactor: extract '0' constant
 - [x] rewrite to use charArray, because with stream it's not possible to look to next item
 - [x] inline tempScore
-- [ ] replace methods with methods for ListArray of char/int?
+- [x] Refactor tests to only include tests to explain working code
+- [x] replace methods with methods for ListArray of char/int?
 - [ ] refactor: instead of isNonZero method, use a convertToIntScore method
 - [ ] refactor: make sumscore dependent on only current char and check next char if it exists
 - [ ] XXXXXXXXXXXX -> score: 300

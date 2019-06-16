@@ -13,21 +13,9 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void oneHit_score1() {
-        BowlingGame bowlingGame = new BowlingGame("1-------------------");
-        assertEquals(1, bowlingGame.getScore());
-    }
-
-    @Test
-    public void allOneHits_score20() {
-        BowlingGame bowlingGame = new BowlingGame("11111111111111111111");
-        assertEquals(20 * 1, bowlingGame.getScore());
-    }
-
-    @Test
-    public void differentNumbers_score15() {
-        BowlingGame bowlingGame = new BowlingGame("12345---------------");
-        assertEquals(1 + 2 + 3 + 4 + 5, bowlingGame.getScore());
+    public void regularThrows_sumTotal() {
+        BowlingGame bowlingGame = new BowlingGame("12345123451234512345");
+        assertEquals(60, bowlingGame.getScore());
     }
 
     @Test
