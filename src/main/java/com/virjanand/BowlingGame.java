@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 class BowlingGame {
     private static final char ZERO = '0';
     private static final int MAX_SCORE = 10;
-    List<Character> scoresList;
+    private static final char STRIKE = 'X';
+    private List<Character> scoresList;
 
     BowlingGame(String scorecard) {
         scoresList = scorecard.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
@@ -26,14 +27,14 @@ class BowlingGame {
     private List<Integer> convertToNumbers() {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < scoresList.size(); i++) {
-            result.add(convertNumber(i, scoresList.get(i)));
+            result.add(convertToNumber(scoresList.get(i), i));
         }
         return result;
     }
 
-    private int convertNumber(int i, Character character) {
-        if (character == 'X')
-            return MAX_SCORE + (convertNumber(i + 1, scoresList.get(i + 1)));
+    private int convertToNumber(Character character, int i) {
+        if (character == STRIKE)
+            return MAX_SCORE + (convertToNumber(scoresList.get(i + 1), i + 1));
         else return scoresList.get(i) - ZERO;
     }
 
