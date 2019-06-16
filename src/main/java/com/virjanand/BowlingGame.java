@@ -34,8 +34,14 @@ class BowlingGame {
 
     private int convertToNumber(Character character, int i) {
         if (character == STRIKE)
-            return MAX_SCORE + (convertToNumber(scoresList.get(i + 1), i + 1));
+            return MAX_SCORE + convertNextThrow(i, 1) + (convertNextThrow(i, 2));
         else return scoresList.get(i) - ZERO;
+    }
+
+    private int convertNextThrow(int i, int i2) {
+        if (i >= scoresList.size() - 3)
+            return 0;
+        return scoresList.get(i + i2) == STRIKE ? MAX_SCORE : scoresList.get(i + i2) - ZERO;
     }
 
     private void replaceZeros() {

@@ -29,4 +29,10 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame("XX5-----------------");
         assertEquals((10 + 10 + 5) + (10 + 5) + 5, bowlingGame.getScore());
     }
+
+    @Test
+    public void allStrikes_maxScore() {
+        BowlingGame bowlingGame = new BowlingGame("XXXXXXXXXXXX");
+        assertEquals(300, bowlingGame.getScore());
+    }
 }
