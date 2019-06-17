@@ -1,8 +1,6 @@
 package com.virjanand;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class BowlingGame {
     private static final char ZERO = '0';
@@ -10,32 +8,26 @@ class BowlingGame {
     private static final char SPARE = '/';
     private static final int MAX_SCORE = 10;
 
-    private List<Character> scoresList;
+    private String scorecard;
 
     BowlingGame(String scorecard) {
-        scoresList = scorecard.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+        this.scorecard = scorecard;
     }
 
     int getScore() {
-        return convertToNumbers().stream().mapToInt(Integer::intValue).sum();
+        return IntStream.range(0, scorecard.length()).map(this::convertToNumber).sum();
     }
 
-    private List<Integer> convertToNumbers() {
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < scoresList.size(); i++) {
-            result.add(convertToNumber(scoresList.get(i), i));
-        }
-        return result;
-    }
-
-    private int convertToNumber(Character character, int currentThrow) {
-        if (isExtraThrow(currentThrow) || isZeroCharacter(currentThrow))
+    private int convertToNumber(int currentThrow) {
+        if (isExtraThrow(currentThrow) || isZeroCharacter(currentThrow)) {
             return 0;
+        }
+        char character = scorecard.charAt(currentThrow);
         if (character == STRIKE)
             return MAX_SCORE + convertNextThrow(currentThrow, 1) + (convertNextThrow(currentThrow, 2));
         if (character == SPARE)
             return MAX_SCORE + convertNextThrow(currentThrow, 1) - convertNextThrow(currentThrow, -1);
-        else return scoresList.get(currentThrow) - ZERO;
+        else return scorecard.charAt(currentThrow) - ZERO;
     }
 
     private boolean isExtraThrow(int throwNumber) {
@@ -45,24 +37,24 @@ class BowlingGame {
     private int convertNextThrow(int currentThrow, int offsetNextThrow) {
         if (isInLastTwoThrows(currentThrow) || isZeroCharacter(currentThrow + offsetNextThrow))
             return 0;
-        if (scoresList.get(currentThrow + 2) == SPARE)
+        if (scorecard.charAt(currentThrow + 2) == SPARE)
             return 5;
-        return scoresList.get(currentThrow + offsetNextThrow) == STRIKE ? MAX_SCORE : scoresList.get(currentThrow + offsetNextThrow) - ZERO;
+        return scorecard.charAt(currentThrow + offsetNextThrow) == STRIKE ? MAX_SCORE : scorecard.charAt(currentThrow + offsetNextThrow) - ZERO;
     }
 
     private boolean isInLastTwoThrows(int currentThrow) {
-        return currentThrow >= scoresList.size() - 2;
+        return currentThrow >= scorecard.length() - 2;
     }
 
     private boolean isZeroCharacter(int throwNumber) {
-        return scoresList.get(throwNumber) == '-';
+        return scorecard.charAt(throwNumber) == '-';
     }
 
     private boolean isSpareCharacter(int throwNumber) {
-        return scoresList.get(throwNumber - 1) == '/';
+        return scorecard.charAt(throwNumber - 1) == '/';
     }
 
     private boolean isStrikeCharacter(int throwNumber) {
-        return scoresList.get(throwNumber - 2) == 'X';
+        return scorecard.charAt(throwNumber - 2) == 'X';
     }
 }
