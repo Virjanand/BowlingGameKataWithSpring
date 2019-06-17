@@ -29,7 +29,7 @@ class BowlingGame {
     }
 
     private int convertToNumber(Character character, int currentThrow) {
-        if (isExtraThrow(currentThrow) || scoresList.get(currentThrow) == '-')
+        if (isExtraThrow(currentThrow) || isZeroCharacter(currentThrow))
             return 0;
         if (character == STRIKE)
             return MAX_SCORE + convertNextThrow(currentThrow, 1) + (convertNextThrow(currentThrow, 2));
@@ -39,14 +39,30 @@ class BowlingGame {
     }
 
     private boolean isExtraThrow(int throwNumber) {
-        return throwNumber >= scoresList.size() - 2 && (scoresList.get(throwNumber - 2) == 'X' || scoresList.get(throwNumber - 1) == '/');
+        return isInLastTwoThrows(throwNumber) && (isStrikeCharacter(throwNumber) || isSpareCharacter(throwNumber));
     }
 
-    private int convertNextThrow(int i, int i2) {
-        if (i >= scoresList.size() - 2 || scoresList.get(i + i2) == '-')
+    private int convertNextThrow(int currentThrow, int offsetNextThrow) {
+        if (isInLastTwoThrows(currentThrow) || isZeroCharacter(currentThrow + offsetNextThrow))
             return 0;
-        if (scoresList.get(i + 2) == SPARE)
+        if (scoresList.get(currentThrow + 2) == SPARE)
             return 5;
-        return scoresList.get(i + i2) == STRIKE ? MAX_SCORE : scoresList.get(i + i2) - ZERO;
+        return scoresList.get(currentThrow + offsetNextThrow) == STRIKE ? MAX_SCORE : scoresList.get(currentThrow + offsetNextThrow) - ZERO;
+    }
+
+    private boolean isInLastTwoThrows(int currentThrow) {
+        return currentThrow >= scoresList.size() - 2;
+    }
+
+    private boolean isZeroCharacter(int throwNumber) {
+        return scoresList.get(throwNumber) == '-';
+    }
+
+    private boolean isSpareCharacter(int throwNumber) {
+        return scoresList.get(throwNumber - 1) == '/';
+    }
+
+    private boolean isStrikeCharacter(int throwNumber) {
+        return scoresList.get(throwNumber - 2) == 'X';
     }
 }

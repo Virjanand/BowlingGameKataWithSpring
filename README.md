@@ -43,4 +43,5 @@ Examples:
 - [x] XXXXXXXXXXXX -> score: 300
 - [x] 5/5/5/5/5/5/5/5/5/5/5 -> 150
 - [x] X5/---------------- -> 30
-- [ ] refactor convertNextThrow
+- [x] refactor convertNextThrow
+- [ ] refactor to keep stream from constructor
