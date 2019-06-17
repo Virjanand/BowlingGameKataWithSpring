@@ -45,6 +45,8 @@ class BowlingGame {
     private int convertNextThrow(int i, int i2) {
         if (i >= scoresList.size() - 2 || scoresList.get(i + i2) == '-')
             return 0;
+        if (scoresList.get(i + 2) == SPARE)
+            return 5;
         return scoresList.get(i + i2) == STRIKE ? MAX_SCORE : scoresList.get(i + i2) - ZERO;
     }
 }

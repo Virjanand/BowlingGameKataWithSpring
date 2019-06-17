@@ -41,4 +41,10 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame("5/5/5/5/5/5/5/5/5/5/5");
         assertEquals(150, bowlingGame.getScore());
     }
+
+    @Test
+    public void spareAfterStrike() {
+        BowlingGame bowlingGame = new BowlingGame("X5/----------------");
+        assertEquals(30, bowlingGame.getScore());
+    }
 }
