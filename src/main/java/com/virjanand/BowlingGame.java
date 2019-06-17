@@ -42,8 +42,7 @@ class BowlingGame {
             return 5;
         if (isStrikeCharacter(currentThrow + offsetNextThrow))
             return MAX_SCORE;
-        else
-            return calculateRegularThrow(currentThrow + offsetNextThrow);
+        return calculateRegularThrow(currentThrow + offsetNextThrow);
     }
 
     private boolean isExtraThrow(int throwNumber) {
