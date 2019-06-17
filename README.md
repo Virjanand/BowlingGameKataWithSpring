@@ -45,4 +45,5 @@ Examples:
 - [x] X5/---------------- -> 30
 - [x] refactor convertNextThrow
 - [x] refactor to keep stream from constructor
-- [x] ------------------X12 -> 13
+- [x] ------------------X12 -> 
+- [ ] refactor unit tests

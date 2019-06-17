@@ -7,50 +7,47 @@ import org.junit.Test;
 public class BowlingGameTest {
 
     @Test
-    public void noHit_score0() {
-        BowlingGame bowlingGame = new BowlingGame("--------------------");
-        assertEquals(0, bowlingGame.getScore());
+    public void noHit() {
+        checkScoreCardTotal("--------------------", 0);
     }
 
     @Test
-    public void regularThrows_sumTotal() {
-        BowlingGame bowlingGame = new BowlingGame("12345123451234512345");
-        assertEquals(60, bowlingGame.getScore());
+    public void regularThrows() {
+        checkScoreCardTotal("12345123451234512345", 60);
     }
 
     @Test
-    public void strike_add10AndDoubleNextThrow() {
-        BowlingGame bowlingGame = new BowlingGame("X5-X9---------------");
-        assertEquals(10 + 2 * 5 + 10 + 2 * 9, bowlingGame.getScore());
+    public void strike() {
+        checkScoreCardTotal("X5-X9---------------", 10 + 2 * 5 + 10 + 2 * 9);
     }
 
     @Test
-    public void twoStrikes_compoundSum() {
-        BowlingGame bowlingGame = new BowlingGame("XX5-----------------");
-        assertEquals((10 + 10 + 5) + (10 + 5) + 5, bowlingGame.getScore());
+    public void twoStrikes() {
+        checkScoreCardTotal("XX5-----------------", (10 + 10 + 5) + (10 + 5) + 5);
     }
 
     @Test
-    public void allStrikes_maxScore() {
-        BowlingGame bowlingGame = new BowlingGame("XXXXXXXXXXXX");
-        assertEquals(300, bowlingGame.getScore());
+    public void allStrikes() {
+        checkScoreCardTotal("XXXXXXXXXXXX", 300);
     }
 
     @Test
     public void spare() {
-        BowlingGame bowlingGame = new BowlingGame("5/5/5/5/5/5/5/5/5/5/5");
-        assertEquals(150, bowlingGame.getScore());
+        checkScoreCardTotal("5/5/5/5/5/5/5/5/5/5/5", 150);
     }
 
     @Test
     public void spareAfterStrike() {
-        BowlingGame bowlingGame = new BowlingGame("X5/----------------");
-        assertEquals(30, bowlingGame.getScore());
+        checkScoreCardTotal("X5/----------------", 30);
     }
 
     @Test
     public void normalThrowsAfterLastStrike() {
-        BowlingGame bowlingGame = new BowlingGame("------------------X12");
-        assertEquals(13, bowlingGame.getScore());
+        checkScoreCardTotal("------------------X12", 13);
+    }
+
+    private void checkScoreCardTotal(String s, int i) {
+        BowlingGame bowlingGame = new BowlingGame(s);
+        assertEquals(i, bowlingGame.getScore());
     }
 }
