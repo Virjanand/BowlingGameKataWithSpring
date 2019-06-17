@@ -4,8 +4,6 @@ import java.util.stream.IntStream;
 
 class BowlingGame {
     private static final char ZERO = '0';
-    private static final char STRIKE = 'X';
-    private static final char SPARE = '/';
     private static final int MAX_SCORE = 10;
 
     private String scorecard;
@@ -15,31 +13,45 @@ class BowlingGame {
     }
 
     int getScore() {
-        return IntStream.range(0, scorecard.length()).map(this::convertToNumber).sum();
+        return IntStream.range(0, scorecard.length()).map(this::convertScorecardCharacterToNumber).sum();
     }
 
-    private int convertToNumber(int currentThrow) {
-        if (isExtraThrow(currentThrow) || isZeroCharacter(currentThrow)) {
-            return 0;
-        }
-        char character = scorecard.charAt(currentThrow);
-        if (character == STRIKE)
-            return MAX_SCORE + convertNextThrow(currentThrow, 1) + (convertNextThrow(currentThrow, 2));
-        if (character == SPARE)
-            return MAX_SCORE + convertNextThrow(currentThrow, 1) - convertNextThrow(currentThrow, -1);
-        else return scorecard.charAt(currentThrow) - ZERO;
+    private int convertScorecardCharacterToNumber(int currentThrow) {
+        if (isExtraThrow(currentThrow) || isZeroCharacter(currentThrow)) return 0;
+        if (isSpareCharacter(currentThrow)) return CalculateSpareBasedOnNextThrow(currentThrow);
+        if (isStrikeCharacter(currentThrow)) return calculateStrikeScoreBasedOnNext2Throws(currentThrow);
+        return calculateRegularThrow(currentThrow);
     }
 
-    private boolean isExtraThrow(int throwNumber) {
-        return isInLastTwoThrows(throwNumber) && (isStrikeCharacter(throwNumber) || isSpareCharacter(throwNumber));
+    private int CalculateSpareBasedOnNextThrow(int currentThrow) {
+        return MAX_SCORE + convertNextThrow(currentThrow, 1) - convertNextThrow(currentThrow, -1);
+    }
+
+    private int calculateStrikeScoreBasedOnNext2Throws(int currentThrow) {
+        return MAX_SCORE + convertNextThrow(currentThrow, 1) + (convertNextThrow(currentThrow, 2));
+    }
+
+    private int calculateRegularThrow(int currentThrow) {
+        return scorecard.charAt(currentThrow) - ZERO;
     }
 
     private int convertNextThrow(int currentThrow, int offsetNextThrow) {
         if (isInLastTwoThrows(currentThrow) || isZeroCharacter(currentThrow + offsetNextThrow))
             return 0;
-        if (scorecard.charAt(currentThrow + 2) == SPARE)
+        if (isSpareCharacter(currentThrow + offsetNextThrow))
             return 5;
-        return scorecard.charAt(currentThrow + offsetNextThrow) == STRIKE ? MAX_SCORE : scorecard.charAt(currentThrow + offsetNextThrow) - ZERO;
+        if (isStrikeCharacter(currentThrow + offsetNextThrow))
+            return MAX_SCORE;
+        else
+            return calculateRegularThrow(currentThrow + offsetNextThrow);
+    }
+
+    private boolean isExtraThrow(int throwNumber) {
+        return isInLastTwoThrows(throwNumber) &&
+                (isStrikeCharacter(throwNumber - 1)
+                        || isStrikeCharacter(throwNumber - 2)
+                        || isSpareCharacter(throwNumber - 1)
+                );
     }
 
     private boolean isInLastTwoThrows(int currentThrow) {
@@ -51,10 +63,10 @@ class BowlingGame {
     }
 
     private boolean isSpareCharacter(int throwNumber) {
-        return scorecard.charAt(throwNumber - 1) == '/';
+        return scorecard.charAt(throwNumber) == '/';
     }
 
     private boolean isStrikeCharacter(int throwNumber) {
-        return scorecard.charAt(throwNumber - 2) == 'X';
+        return scorecard.charAt(throwNumber) == 'X';
     }
 }
